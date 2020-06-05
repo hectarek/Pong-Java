@@ -64,11 +64,11 @@ public class Paddle {
         // Collisions with ball 
 
         if (left) {
-            if (ballX <= width && ballY + Ball.SIZE >= y && ballY <= y+height) {
+            if (ballX <= width && ballY + Ball.SIZE >= y && ballY <= y + height) {
                 b.changeXDir();
             }
         } else {
-            if(ballX + Ball.SIZE >= Game.WIDTH - width && ballY + Ball.SIZE >= y && ballY <= height)
+            if(ballX + Ball.SIZE >= Game.WIDTH - width && ballY + Ball.SIZE >= y && ballY <= y + height)
             b.changeXDir();
 
         }
