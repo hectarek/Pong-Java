@@ -11,7 +11,7 @@ import java.awt.image.BufferStrategy;
 public class Game extends Canvas implements Runnable {
     
     private static final long serialVersionUID = 8385866309944759846L;
-    public static final int WIDTH = 1000;
+    public static final int WIDTH = 1200;
     public static final int HEIGHT = WIDTH * (9/16);
 
     public boolean running = false;
@@ -26,7 +26,7 @@ public class Game extends Canvas implements Runnable {
         canvasSetup();
         initalize();
 
-        new Window("Pong", this);
+        new Window("Hector's Pong Game", this);
 
         this.addKeyListener(new KeyInput(paddle1, paddle2));
         this.setFocusable(true);
@@ -54,7 +54,6 @@ public class Game extends Canvas implements Runnable {
         this.requestFocus();
 
         //Game Timer
-
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -69,7 +68,9 @@ public class Game extends Canvas implements Runnable {
                 update();
                 delta--;
             }
-            if (running) draw();
+            if (running) {
+                draw();
+            } 
             frames++;
 
             if(System.currentTimeMillis() - timer > 1000 ) {
@@ -81,7 +82,7 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    private void draw (){
+    private void draw() {
         // Initalize drawing tools
 
         BufferStrategy buffer = this.getBufferStrategy();
@@ -114,6 +115,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
+        // Dotted line
         g.setColor(Color.white);
         Graphics2D g2d = (Graphics2D) g;
         Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{10}, 0);
